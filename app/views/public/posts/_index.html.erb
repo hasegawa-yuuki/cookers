@@ -1,0 +1,32 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>title</th>
+      <th>thumbnail</th>
+      <th>created_at</th>
+      <th>post_user</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if posts.any? %>
+      <% posts.each do |post| %>
+        <tr>
+          <td><%= link_to post.title, post_path(post) %></td>
+          <td>
+            <% if post.image.attached? %>
+              <%= image_tag post.image.variant(gravity: :center, resize: "100x100", crop: "50x50+0+0").processed, class: "img img-fluid" %>
+            <% else %>
+              <%= image_tag 'no_image.jpg', class: "img-img-fluid" %>
+            <% end %>
+          </td>
+          <td><%= post.created_at %></td>
+          <td><%= link_to post.user.name, user_path(post.user) %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <th colspan="4">no-data</th>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

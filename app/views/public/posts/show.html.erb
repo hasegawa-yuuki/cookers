@@ -1,0 +1,24 @@
+<div class="d-flex">
+  <h1><%= @post.title %></h1>
+  <span class="ml-4"><%= image_tag @post.image.variant(gravity: :center, resize: "100x100", crop: "50x50+0+0").processed if @post.image.attached? %></span>
+</div>
+
+<table class="table table">
+  <tr>
+    <td colspan="2"><%= @post.body %></td>
+  </tr>
+  <tr>
+    <th>updated_at</th>
+    <td><%= @post.updated_at %></td>
+  </tr>
+  <tr>
+    <th>post user</th>
+    <td><%= link_to @post.user.name, user_path(@post.user) %></td>
+  </tr>
+</table>
+
+<% if current_user == @post.user %>
+  <%= link_to "edit", edit_post_path(@post), class: "btn btn-warning" %>
+  <%= link_to "destroy", post_path(@post), method: :delete, data: { confirm: "reary?" }, class: "btn btn-danger" %>
+<% end %>
+<%= link_to "index", root_path, class: "btn btn-secondary" %>

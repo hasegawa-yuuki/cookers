@@ -1,0 +1,9 @@
+@use '~bootstrap/scss/bootstrap';
+
+@use 'stylesheets/actiontext.scss';
+
+@use 'trix';
+
+.jumbotron {
+  height: 50vh;
+}

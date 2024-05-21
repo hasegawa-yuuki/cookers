@@ -1,0 +1,27 @@
+  <%= render "layouts/error_messages", model: f.object %>
+  <div class="mb-2 row">
+    <div class="col-md-6">
+      <%= f.label :image, "thumbnail" %>
+      <%= f.file_field :image, class: "form-control" %>
+    </div>
+    <%= f.object.image.variant(gravity: :center, resize: "100x100", crop:"50x50+0+0").processed if f.object.image.attached? %>
+  </div>
+
+  <div class="mb-2 row">
+    <div class="col-md-6">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+  </div>
+  
+  <div class="mb-2 row">
+    <div class="col-md-6">
+      <%= f.label :category_id %>
+      <%= f.collection_select :category_id, Category.all, :id, :name, { include_blank: "--select--" }, { class: "form-control" } %>
+    </div>
+  </div>
+  
+  <div class="mb-2">
+    <%= f.label :body %>
+    <%= f.rich_text_area :body %>
+  </div>
