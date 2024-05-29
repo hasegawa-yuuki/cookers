@@ -8,17 +8,17 @@
     <td colspan="2"><%= @post.body %></td>
   </tr>
   <tr>
-    <th>updated_at</th>
+    <th>投稿日</th>
     <td><%= @post.updated_at %></td>
   </tr>
   <tr>
-    <th>post user</th>
+    <th>投稿</th>
     <td><%= link_to @post.user.name, user_path(@post.user) %></td>
   </tr>
 </table>
 
 <% if current_user == @post.user %>
-  <%= link_to "edit", edit_post_path(@post), class: "btn btn-warning" %>
-  <%= link_to "destroy", post_path(@post), method: :delete, data: { confirm: "reary?" }, class: "btn btn-danger" %>
+  <%= link_to "編集", edit_post_path(@post), class: "btn btn-warning" %>
+  <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "reary?" }, class: "btn btn-danger" %>
 <% end %>
-<%= link_to "index", root_path, class: "btn btn-secondary" %>
+<%= link_to "投稿一覧", root_path, class: "btn btn-secondary" %>

@@ -1,10 +1,10 @@
 <table class="table">
   <thead>
     <tr>
-      <th>title</th>
-      <th>thumbnail</th>
-      <th>created_at</th>
-      <th>post_user</th>
+      <th>タイトル</th>
+      <th>サムネイル</th>
+      <th>投稿日</th>
+      <th>投稿ユーザー</th>
     </tr>
   </thead>
   <tbody>
@@ -14,9 +14,9 @@
           <td><%= link_to post.title, post_path(post) %></td>
           <td>
             <% if post.image.attached? %>
-              <%= image_tag post.image.variant(gravity: :center, resize: "100x100", crop: "50x50+0+0").processed, class: "img img-fluid" %>
+              <%= image_tag post.image.variant(gravity: :center, resize: "50x50^", crop: "50x50+0+0").processed, class: "img img-fluid" %>
             <% else %>
-              <%= image_tag 'no_image.jpg', class: "img-img-fluid" %>
+              <%= image_tag 'no_image.jpg', width: "50px", class: "img-img-fluid" %>
             <% end %>
           </td>
           <td><%= post.created_at %></td>
