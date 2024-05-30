@@ -1,7 +1,9 @@
-<h1>Admin::Home#top</h1>
-<p>Find me in app/views/admin/home/top.html.erb</p>
-<% if current_admin %>
-  <%= link_to "users", admin_users_path %>
-  <%= link_to "posts", admin_posts_path %>
-  <%= link_to "log out", destroy_admin_session_path, method: :delete %>
-<% end %>
+
+
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <h1 class="mt-4">管理者コンソール</h1>
+    <%= link_to "ユーザー一覧", admin_users_path, class: "btn btn-primary btn-block p-4 my-4" %>
+    <%= link_to "投稿一覧", admin_posts_path, class: "btn btn-primary btn-block p-4 my-4" %>
+  </div>
+</div>

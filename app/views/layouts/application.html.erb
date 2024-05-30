@@ -37,18 +37,19 @@
               <% end %>
               <% if current_admin %>
                 <li class="nav-item">
-                  <%= link_to "admin log out", destroy_admin_session_path, method: :delete, class: "nav-link" %>
+                  <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
                 </li>
               <% end %>
             </ul>
           </div>
         </div>
       </nav>
+      <div class="container">
+        <%= render 'layouts/flash_message' %>
+      </div>
       <%= yield(:jumbotron) %>
     </header>
     <div class="container">
-      <%= notice %>
-      <%= alert %>
       <%= yield %>
     </div>
   </body>

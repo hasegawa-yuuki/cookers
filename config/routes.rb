@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   scope module: :public do
     root 'home#top'
     resources :users, only: [:show, :destroy]
-    resources :posts, only: [:show, :new, :create, :edit, :update, :destroy]
+    resources :posts, only: [:show, :new, :create, :edit, :update, :destroy] do
+      resource :favorites, only: [:create, :destroy]
+    end
   end
   
   namespace :admin do

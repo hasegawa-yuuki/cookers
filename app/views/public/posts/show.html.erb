@@ -3,6 +3,10 @@
   <span class="ml-4"><%= image_tag @post.image.variant(gravity: :center, resize: "100x100", crop: "50x50+0+0").processed if @post.image.attached? %></span>
 </div>
 
+<% if current_user %>
+  <%= render "public/favorites/favorite_button", post: @post %>
+<% end %>
+
 <table class="table table">
   <tr>
     <td colspan="2"><%= @post.body %></td>
@@ -12,10 +16,11 @@
     <td><%= @post.updated_at %></td>
   </tr>
   <tr>
-    <th>投稿</th>
+    <th>投稿ユーザー</th>
     <td><%= link_to @post.user.name, user_path(@post.user) %></td>
   </tr>
 </table>
+
 
 <% if current_user == @post.user %>
   <%= link_to "編集", edit_post_path(@post), class: "btn btn-warning" %>

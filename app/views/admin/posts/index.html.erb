@@ -1,4 +1,11 @@
-<h1>Admin::Posts#index</h1>
+<h1 class="mt-4">投稿一覧</h1>
+
+<div class="my-4">
+  <%= form_with url: admin_posts_path, method: :get do |f| %>
+    <%= f.search_field :keyword, value: params[:keyword], placeholder: "キーワードで検索" %>
+    <%= f.submit "検索" %>
+  <% end %>
+</div>
 
 <table class="table">
   <thead>
@@ -17,7 +24,7 @@
         <td><%= post.title %></td>
         <td><%= post.user.name %></td>
         <td><%= l post.created_at, format: :long %></td>
-        <td><%= link_to "destroy", admin_post_path(post), method: :delete, data: { confirm: "reary?" } %></td>
+        <td><%= link_to "destroy", admin_post_path(post), method: :delete, data: { confirm: "reary?" }, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>

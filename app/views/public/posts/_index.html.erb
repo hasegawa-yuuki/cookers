@@ -5,6 +5,9 @@
       <th>サムネイル</th>
       <th>投稿日</th>
       <th>投稿ユーザー</th>
+      <% if current_user %>
+        <th></th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -21,6 +24,9 @@
           </td>
           <td><%= post.created_at %></td>
           <td><%= link_to post.user.name, user_path(post.user) %></td>
+          <% if current_user %>
+            <td><%= render "public/favorites/favorite_button", post: post %></td>
+          <% end %>
         </tr>
       <% end %>
     <% else %>
